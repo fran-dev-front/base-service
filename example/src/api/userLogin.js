@@ -1,10 +1,11 @@
 import * as base from 'base-service'
+import { BASE_URL } from '../constants/constants'
 
 
 export default class LoginApiService extends base.BaseService {
   constructor(){
-    const baseUrl = "https://ecommerce-game-woz.herokuapp.com"
-    const endpoint = "auth/local"
+    const baseUrl = BASE_URL;
+    const endpoint = "auth/login/"
     super(baseUrl, endpoint);
   }
 }
