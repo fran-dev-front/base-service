@@ -1,6 +1,15 @@
 import React from 'react'
-import styles from './styles.module.css'
+export { default as BaseService } from './baseService/baseService'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
+
+
+export const ExampleComponent = () => {
+
+  return (
+    <div>
+   
+    </div>
+  )
 }
+
+export default ExampleComponent;

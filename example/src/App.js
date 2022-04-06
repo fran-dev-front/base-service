@@ -1,10 +1,14 @@
 import React from 'react'
-
-import { ExampleComponent } from 'base-service'
+import * as base from 'base-service'
 import 'base-service/dist/index.css'
+import LoginApiService from './api/userLogin'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+
+  const loginService = new LoginApiService();
+  loginService.getAll({identifier:'whitehat94@hotmail.com', password: '123'})
+
+  return <base.ExampleComponent text="Create React Library Example 😄" />
 }
 
 export default App
