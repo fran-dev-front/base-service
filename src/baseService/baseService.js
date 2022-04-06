@@ -9,14 +9,15 @@ class BaseService{
 
   async getAll(formData){
       const url = this.url
-      await axios.post(url, formData)  
-      .then(function(response){
-        console.log(response.data);
-        return response.data
-      })
-      .catch(function(error){
-        console.log(error);
-      });
+      let res = await  axios.post(url, formData)  
+      return res.data;
+      // .then(function(response){
+      //   console.log(response.data);
+      // })
+      // .catch(function(error){
+      //   console.log(error);
+      // });
+
   }
   
   // getAllAuth(){
