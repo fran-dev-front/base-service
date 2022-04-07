@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { authFetch } from './fetch'
+import authFetch from './fetch'
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
@@ -32,80 +32,124 @@ class BaseService{
     this.url = this.baseUrl+'/'+this.endPoint
   }
 
-  async Post(formData){
+  async postData(formData){
     try{
-      let url = this.url
-      let response = await axios.post(url, formData)  
+      const params = {
+        method: "POST",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)  
       return response;
     }catch (error){
       return null;
     }
   }
 
-  async PostAuth(formData, logout){
+  async postDataAuth(formData, logout){
     try{
-      let url = this.url
-      let response = await authFetch(url, params, logout);//axios.post(url, formData)  
-      return response;
+      const params = {
+        method: "POST",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let result = await authFetch(this.url, params, logout) 
+      return result ? result : null
     }catch (error){
       return null;
     }
   }
   
   async getAllAuth(){
-     
-    const url = this.url
-      let res = await axios.post(url, formData)  
-      .then(function(response){
-        console.log(response.data);
-      })
-      .catch(function(error){
-        console.log(error);
-      });
+    try{
+      const params = {
+        method: "POST",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)  
+      return response;
+    }catch (error){
+      return null;
+    }
   }
 
   async getById(){
-    const url = this.url
-    let res = await axios.post(url, formData)  
-    .then(function(response){
-      console.log(response.data);
-    })
-    .catch(function(error){
-      console.log(error);
-    });
+    try{
+      const params = {
+        method: "POST",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)  
+      return response;
+    }catch (error){
+      return null;
+    }
   }
 
   async getByIdAuth(){
     const url = this.url
-    let res = await axios.post(url, formData)  
-    .then(function(response){
-      console.log(response.data);
-    })
-    .catch(function(error){
-      console.log(error);
-    });
+    try{
+      const params = {
+        method: "POST",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)  
+      return response;
+    }catch (error){
+      return null;
+    }
   }
 
   async edit(){
-    const url = this.url
-    let res = await axios.post(url, formData)  
-    .then(function(response){
-      console.log(response.data);
-    })
-    .catch(function(error){
-      console.log(error);
-    });
+    try{
+      const params = {
+        method: "POST",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)  
+      return response;
+    }catch (error){
+      return null;
+    }
   }
 
   async editAuth(){
-    const url = this.url
-    let res = await  axios.post(url, formData)  
-    .then(function(response){
-      console.log(response.data);
-    })
-    .catch(function(error){
-      console.log(error);
-    });
+    try{
+      const params = {
+        method: "POST",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)  
+      return response;
+    }catch (error){
+      return null;
+    }
   }
 }
 

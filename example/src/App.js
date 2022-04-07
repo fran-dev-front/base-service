@@ -5,14 +5,16 @@ import LoginApiService from './api/userLogin'
 
 const App = () => {
 
-  
+  function logout(){
+    console.log('logout');
+  }
 
   async function login(){
     let loginService = new LoginApiService();
-    let response = await loginService.getAll({
+    let response = await loginService.postDataAuth({
       email: "alejandro.jata.torres+1@gmail.com",
       password: "test12345"
-    })
+    }, logout())
     console.log(response)
   }
 

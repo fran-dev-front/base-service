@@ -1,9 +1,13 @@
 import axios from 'axios'
-export function getToken(){
+import jwtDecode from "jwt-decode"
+
+function getToken(){
+  console.log('entro a token')
+  const TOKEN = 'token'
   return localStorage.getItem(TOKEN)
 }
 
-export function hasExpiredToken(token){
+function hasExpiredToken(token){
   
   const tokeDecode = jwtDecode(token)
   const expiredDate = tokeDecode.exp * 1000;
@@ -14,14 +18,16 @@ export function hasExpiredToken(token){
     return false;
 }
 
-export async function authFetch(url, params, logout){
+async function authFetch(url, params, logout){
   const token = getToken()
   if(!token){
     logout();
   } else {
-    if(hasExpiredToken(token)){
-      logout();
-    } else {
+    console.log('entro a si hay token')
+    //if(hasExpiredToken(token)){
+      //logout();
+    //} else {
+      console.log('entro a axios')
       const paramsTemp = {
         ...params,
         headers: {
@@ -29,14 +35,18 @@ export async function authFetch(url, params, logout){
           Authorization: `Bearer ${token}`, 
         }
       }
+      console.log(paramsTemp)
       try {
-        const response = await axios.post(url, paramsTemp)
+        const response = await axios(paramsTemp)
         const result = response.json()
         return result;
         
       } catch (error) {
         return error;
       }
-    }
+   // }
+    
   }
 }
+
+export default authFetch;
