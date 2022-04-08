@@ -24,7 +24,7 @@ axios.interceptors.response.use(function (response) {
 });
 
 
-class BaseService{
+export class BaseService{
 
   constructor(baseUrl, endPoint) {
     this.baseUrl = baseUrl;
@@ -43,7 +43,7 @@ class BaseService{
         },
       }
       let response = await axios(params)  
-      return response;
+      return response.data;
     }catch (error){
       return null;
     }
