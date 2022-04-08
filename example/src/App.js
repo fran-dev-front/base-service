@@ -11,10 +11,10 @@ const App = () => {
 
   async function login(){
     let loginService = new LoginApiService();
-    let response = await loginService.postDataAuth({
+    let response = await loginService.postData({
       email: "alejandro.jata.torres+1@gmail.com",
       password: "test12345"
-    }, logout())
+    })
     console.log(response)
   }
 
