@@ -83,12 +83,11 @@ export class BaseService{
     }
   }
 
-  async getAllAuth(formData, logout){
+  async getAllAuth(logout){
     try{
       const params = {
         method: "GET",
         url: this.url,
-        data: formData,
         headers: {
           "Content-Type":"application/json"
         },
@@ -100,12 +99,11 @@ export class BaseService{
     }
   }
 
-  async getAllById(id, formData){
+  async getAllById(id){
     try{
       const params = {
         method: "GET",
         url: `${this.url}/${id}`,
-        data: formData,
         headers: {
           "Content-Type":"application/json"
         },
