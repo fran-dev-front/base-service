@@ -134,7 +134,6 @@ export class BaseService{
     }
   }
   
-  
 
   async getById(){
     try{
