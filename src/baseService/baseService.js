@@ -65,11 +65,11 @@ export class BaseService{
       return null;
     }
   }
-  
-  async getAllAuth(){
+
+  async getAll(formData){
     try{
       const params = {
-        method: "POST",
+        method: "GET",
         url: this.url,
         data: formData,
         headers: {
@@ -77,11 +77,64 @@ export class BaseService{
         },
       }
       let response = await axios(params)  
-      return response;
+      return response.data;
     }catch (error){
       return null;
     }
   }
+
+  async getAllAuth(formData, logout){
+    try{
+      const params = {
+        method: "GET",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await authFetch(this.url, params, logout)   
+      return response.data;
+    }catch (error){
+      return null;
+    }
+  }
+
+  async getAllById(id, formData){
+    try{
+      const params = {
+        method: "GET",
+        url: `${this.url}/${id}`,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)   
+      return response.data;
+    }catch (error){
+      return null;
+    }
+  }
+
+  async getAllByIdAuth(id, formData, logout){
+    try{
+      const params = {
+        method: "GET",
+        url: `${this.url}/${id}`,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await authFetch(this.url, params, logout)   
+      return response.data;
+    }catch (error){
+      return null;
+    }
+  }
+  
+  
 
   async getById(){
     try{
