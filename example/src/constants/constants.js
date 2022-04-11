@@ -1,1 +1,1 @@
-export const BASE_URL = "https://tender-chandrasekhar.74-208-27-206.plesk.page/api/v1"
+export const BASE_URL = "https://trusting-chebyshev.74-208-19-230.plesk.page/api/v1"

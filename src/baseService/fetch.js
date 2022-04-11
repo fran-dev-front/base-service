@@ -32,14 +32,13 @@ async function authFetch(url, params, logout){
         ...params,
         headers: {
           ...params?.headers,
-          Authorization: `Bearer ${token}`, 
+          authorization: `jwt ${token}`, 
         }
       }
       console.log(paramsTemp)
       try {
         const response = await axios(paramsTemp)
-        const result = response.json()
-        return result;
+        return response;
         
       } catch (error) {
         return error;

@@ -11,10 +11,12 @@ const App = () => {
 
   async function login(){
     let loginService = new LoginApiService();
-    let response = await loginService.postData({
-      email: "alejandro.jata.torres+1@gmail.com",
-      password: "test12345"
-    })
+    let response = await loginService.getAllAuth(logout)
+    // let response = await loginService.postData({
+    //   email: "omem.emanuel@gmail.com",
+    //   password: "a12345678a"
+    // })
+    // localStorage.setItem('token', response.token)
     console.log(response)
   }
 
