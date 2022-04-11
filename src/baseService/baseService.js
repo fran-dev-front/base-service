@@ -132,7 +132,6 @@ export class BaseService{
     }
   }
   
-
   async getById(){
     try{
       const params = {
@@ -150,57 +149,23 @@ export class BaseService{
     }
   }
 
-  async getByIdAuth(){
-    const url = this.url
+  async deleteAuth(id, logout){
     try{
       const params = {
-        method: "POST",
-        url: this.url,
+        method: "DELETE",
+        url: `${this.url}/${id}`,
         data: formData,
         headers: {
           "Content-Type":"application/json"
         },
       }
-      let response = await axios(params)  
+      let response = await authFetch(this.url, params, logout)  
       return response;
     }catch (error){
       return null;
     }
   }
-
-  async edit(){
-    try{
-      const params = {
-        method: "POST",
-        url: this.url,
-        data: formData,
-        headers: {
-          "Content-Type":"application/json"
-        },
-      }
-      let response = await axios(params)  
-      return response;
-    }catch (error){
-      return null;
-    }
-  }
-
-  async editAuth(){
-    try{
-      const params = {
-        method: "POST",
-        url: this.url,
-        data: formData,
-        headers: {
-          "Content-Type":"application/json"
-        },
-      }
-      let response = await axios(params)  
-      return response;
-    }catch (error){
-      return null;
-    }
-  }
+  
 }
 
 export default BaseService;
