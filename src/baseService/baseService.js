@@ -125,7 +125,7 @@ export class BaseService{
       return null;
     }
   }
-  async getById(){
+  async getById(id){
     try{
       const params = {
         method: "POST",
