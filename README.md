@@ -26,14 +26,43 @@ All methods use Axios request.
 Create (service).js file
 
 ```jsx
+
+//Methods of BaseService
+
+  async postData(formData){}
+  async postDataAuth(formData, logout){}
+  async getAll(formData){}
+  async getAllAuth(logout){}
+  async getAllById(id){}
+  async getAllByIdAuth(id, formData, logout){}
+  async getById(){}
+  async deleteAuth(id, logout){}
+  async delete(id, logout){}
+
+/////////////////////////////////
+
+//service.js
 import { BaseService } from 'base-service-fran-dev'
+import { BASE_URL } from '../constants/constants'
 
 export default class Service extends BaseService(){
   constructor(){
-    
+    const baseUrl = BASE_URL;
+    const endpoint = "endpoint"
+    super(baseUrl, endpoint);
   }
 }
+//////////////////////
 
+//App.js
+
+import Service from './service.js' //import service
+
+async function functionName(){
+    let Service = new Service();
+    let response = await Service.postData({data})
+}
+logout()
 
 ```
 

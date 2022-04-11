@@ -165,7 +165,22 @@ export class BaseService{
       return null;
     }
   }
-  
+  async delete(id, logout){
+    try{
+      const params = {
+        method: "DELETE",
+        url: `${this.url}/${id}`,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)  
+      return response;
+    }catch (error){
+      return null;
+    }
+  }
 }
 
 export default BaseService;
