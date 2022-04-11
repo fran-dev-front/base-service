@@ -31,7 +31,6 @@ export class BaseService{
     this.endPoint = endPoint;
     this.url = this.baseUrl+'/'+this.endPoint
   }
-
   async postData(formData){
     try{
       const params = {
@@ -48,7 +47,6 @@ export class BaseService{
       return null;
     }
   }
-
   async postDataAuth(formData, logout){
     try{
       const params = {
@@ -65,7 +63,6 @@ export class BaseService{
       return null;
     }
   }
-
   async getAll(formData){
     try{
       const params = {
@@ -82,7 +79,6 @@ export class BaseService{
       return null;
     }
   }
-
   async getAllAuth(logout){
     try{
       const params = {
@@ -98,7 +94,6 @@ export class BaseService{
       return null;
     }
   }
-
   async getAllById(id){
     try{
       const params = {
@@ -114,7 +109,6 @@ export class BaseService{
       return null;
     }
   }
-
   async getAllByIdAuth(id, formData, logout){
     try{
       const params = {
@@ -131,7 +125,6 @@ export class BaseService{
       return null;
     }
   }
-  
   async getById(){
     try{
       const params = {
@@ -148,7 +141,6 @@ export class BaseService{
       return null;
     }
   }
-
   async deleteAuth(id, logout){
     try{
       const params = {
