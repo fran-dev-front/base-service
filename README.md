@@ -34,8 +34,8 @@ Create (service).js file
   async getAll(formData){}
   async getAllAuth(logout){}
   async getAllById(id){}
-  async getAllByIdAuth(id, formData, logout){}
-  async getById(){}
+  async getAllByIdAuth(id, logout){}
+  async getById(id){}
   async deleteAuth(id, logout){}
   async delete(id, logout){}
 

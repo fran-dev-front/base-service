@@ -109,7 +109,7 @@ export class BaseService{
       return null;
     }
   }
-  async getAllByIdAuth(id, formData, logout){
+  async getAllByIdAuth(id, logout){
     try{
       const params = {
         method: "GET",
@@ -129,7 +129,7 @@ export class BaseService{
     try{
       const params = {
         method: "POST",
-        url: this.url,
+        url: `${this.url}/${id}`,
         data: formData,
         headers: {
           "Content-Type":"application/json"
