@@ -25,7 +25,6 @@ axios.interceptors.response.use(function (response) {
 
 
 export class BaseService{
-
   constructor(baseUrl, endPoint) {
     this.baseUrl = baseUrl;
     this.endPoint = endPoint;
@@ -63,12 +62,18 @@ export class BaseService{
       return null;
     }
   }
-  async getAll(formData){
+  async getAll(page="", numberOfItems=""){
+    let urlParams = this.url
+    if(page!=""){
+      urlParams = `${this.url}/?page=${id}`
+      if(numberOfItems!=""){
+        urlParams = `${this.url}/&items=${numberOfItems}`
+      }
+    }
     try{
       const params = {
         method: "GET",
-        url: this.url,
-        data: formData,
+        url: urlParams,
         headers: {
           "Content-Type":"application/json"
         },
@@ -79,16 +84,23 @@ export class BaseService{
       return null;
     }
   }
-  async getAllAuth(logout){
+  async getAllAuth(logout, page="", numberOfItems=""){
+    let urlParams = this.url
+    if(page!=""){
+      urlParams = `${this.url}/?page=${id}`
+      if(numberOfItems!=""){
+        urlParams = `${this.url}/&items=${numberOfItems}`
+      }
+    }
     try{
       const params = {
         method: "GET",
-        url: this.url,
+        url: urlParams,
         headers: {
           "Content-Type":"application/json"
         },
       }
-      let response = await authFetch(this.url, params, logout)   
+      let response = await authFetch(urlParams, params, logout)   
       return response.data;
     }catch (error){
       return null;
@@ -157,7 +169,7 @@ export class BaseService{
       return null;
     }
   }
-  async delete(id, logout){
+  async delete(id){
     try{
       const params = {
         method: "DELETE",
