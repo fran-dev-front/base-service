@@ -31,8 +31,8 @@ Create (service).js file
 
   async postData(formData){}
   async postDataAuth(formData, logout){}
-  async editData(formData){}
-  async editDataAuth(formData, logout){}
+  async editData(id, formData){}
+  async editDataAuth(id, formData, logout){}
   async getAll(page, numberOfItems){}             //page & numberOfItems are optional defaults = ""
   async getAllAuth(logout, page, numberOfItems){} //page & numberOfItems are optional defaults = ""
   async getAllById(id){}          

@@ -46,7 +46,7 @@ export class BaseService{
       return null;
     }
   }
-  async postDataAuth(formData, logout){
+  async postDataAuth(id, formData, logout){
     try{
       const params = {
         method: "POST",
@@ -62,11 +62,11 @@ export class BaseService{
       return null;
     }
   }
-  async editData(formData){
+  async editData(id, formData){
     try{
       const params = {
         method: "PUT",
-        url: this.url,
+        url: `${this.url}/${id}`,
         data: formData,
         headers: {
           "Content-Type":"application/json"
@@ -82,7 +82,7 @@ export class BaseService{
     try{
       const params = {
         method: "PUT",
-        url: this.url,
+        url: `${this.url}/${id}`,
         data: formData,
         headers: {
           "Content-Type":"application/json"
