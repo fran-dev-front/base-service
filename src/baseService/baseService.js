@@ -62,6 +62,38 @@ export class BaseService{
       return null;
     }
   }
+  async editData(formData){
+    try{
+      const params = {
+        method: "PUT",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await axios(params)  
+      return response.data;
+    }catch (error){
+      return null;
+    }
+  }
+  async editDataAuth(formData, logout){
+    try{
+      const params = {
+        method: "PUT",
+        url: this.url,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let result = await authFetch(this.url, params, logout) 
+      return result ? result : null
+    }catch (error){
+      return null;
+    }
+  }
   async getAll(page="", numberOfItems=""){
     let urlParams = this.url
     if(page!=""){
@@ -186,5 +218,20 @@ export class BaseService{
     }
   }
 }
+
+
+// filter(filters: IRequestFilter[]): Observable<T[]> {
+//   let filterstring = '?';
+//   const concatReduce = (accumulator, currentValue) => accumulator + currentValue.key + '=' + currentValue.value + "&";
+//   filterstring = filters.reduce(concatReduce, filterstring);
+//   const url = this.url + filterstring;
+//   console.log(url.substring(0, url.length - 1));
+//   return this.http.get<T[]>(url.substring(0, url.length - 1), { headers: this.headers })
+//     .pipe(
+//       tap(data => console.log()),
+//       // catchError(this.handleError)
+//     );
+// }
+
 
 export default BaseService;
