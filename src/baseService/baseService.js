@@ -46,7 +46,7 @@ export class BaseService{
       return null;
     }
   }
-  async postDataAuth(id, formData, logout){
+  async postDataAuth(formData, logout){
     try{
       const params = {
         method: "POST",
@@ -78,7 +78,7 @@ export class BaseService{
       return null;
     }
   }
-  async editDataAuth(formData, logout){
+  async editDataAuth(id, formData, logout){
     try{
       const params = {
         method: "PUT",
