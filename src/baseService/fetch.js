@@ -18,7 +18,7 @@ function hasExpiredToken(token){
     return false;
 }
 
-async function authFetch(params, logout){
+async function authFetch(url, params, logout){
   const token = getToken()
   if(!token){
     logout();
