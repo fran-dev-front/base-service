@@ -158,7 +158,6 @@ export class BaseService{
       const params = {
         method: "GET",
         url: `${this.url}/${id}`,
-        data: formData,
         headers: {
           "Content-Type":"application/json"
         },
@@ -190,7 +189,6 @@ export class BaseService{
       const params = {
         method: "DELETE",
         url: `${this.url}/${id}`,
-        data: formData,
         headers: {
           "Content-Type":"application/json"
         },
@@ -206,7 +204,6 @@ export class BaseService{
       const params = {
         method: "DELETE",
         url: `${this.url}/${id}`,
-        data: formData,
         headers: {
           "Content-Type":"application/json"
         },

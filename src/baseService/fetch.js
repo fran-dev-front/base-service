@@ -18,7 +18,7 @@ function hasExpiredToken(token){
     return false;
 }
 
-async function authFetch(url, params, logout){
+async function authFetch(params, logout){
   const token = getToken()
   if(!token){
     logout();
@@ -35,7 +35,6 @@ async function authFetch(url, params, logout){
           authorization: `jwt ${token}`, 
         }
       }
-      console.log(paramsTemp)
       try {
         const response = await axios(paramsTemp)
         return response;
