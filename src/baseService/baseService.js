@@ -28,8 +28,10 @@ export class BaseService{
   constructor(baseUrl, endPoint) {
     this.baseUrl = baseUrl;
     this.endPoint = endPoint;
+    this.urlFilter = [];
     this.url = this.baseUrl+'/'+this.endPoint
   }
+  
   async postData(formData){
     try{
       const params = {
@@ -214,21 +216,28 @@ export class BaseService{
       return null;
     }
   }
+  async filter(filters){
+    let startOfsString = '?'
+    filters.map((value) => {
+      this.urlFilter.push(value['key']+'='+value['value'])
+    })
+    let tempurl = this.urlFilter.join('&')
+    try{
+      const params = {
+        method: "GET",
+        url: `${this.url}${startOfsString+tempurl}`,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let response = await authFetch(this.url, params, logout)   
+      return response.data;
+    }catch (error){
+      return null;
+    }
+  }
+
 }
-
-
-// filter(filters: IRequestFilter[]): Observable<T[]> {
-//   let filterstring = '?';
-//   const concatReduce = (accumulator, currentValue) => accumulator + currentValue.key + '=' + currentValue.value + "&";
-//   filterstring = filters.reduce(concatReduce, filterstring);
-//   const url = this.url + filterstring;
-//   console.log(url.substring(0, url.length - 1));
-//   return this.http.get<T[]>(url.substring(0, url.length - 1), { headers: this.headers })
-//     .pipe(
-//       tap(data => console.log()),
-//       // catchError(this.handleError)
-//     );
-// }
 
 
 export default BaseService;

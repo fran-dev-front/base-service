@@ -40,6 +40,11 @@ Create (service).js file
   async getById(id){}
   async deleteAuth(id, logout){}
   async delete(id, logout){}
+  async filter(irequestFilter){} 
+  // let irequestFilter = []
+  // irequestFilter.push({'key':'X', 'value': '1'})
+  // irequestFilter.push({'key':'y', 'value': '2'})
+  // irequestFilter.push({'key':'z', 'value': '3'})
 
 /////////////////////////////////
 

@@ -2,11 +2,18 @@ import * as base from 'base-service'
 import { BASE_URL } from '../constants/constants'
 
 
-export default class LoginApiService extends base.BaseService {
+export class LoginApiService extends base.BaseService {
   constructor(){
     const baseUrl = BASE_URL;
-    const endpoint = "auth/user_is_staff"
+    const endpoint = "auth/login"
     super(baseUrl, endpoint);
+  }
+}
+export class UserManages extends base.BaseService{
+  constructor(){
+    const baseUrl = BASE_URL;
+    const endPoint = 'auth/user';
+    super(baseUrl, endPoint)
   }
 }
 
