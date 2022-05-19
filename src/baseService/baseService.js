@@ -216,12 +216,14 @@ export class BaseService{
       return null;
     }
   }
-  async filter(filters){
+  // baseurl/bussines?id=1&username=memo&page=0
+  async filter(filters, logout){
     let startOfsString = '?'
     filters.map((value) => {
       this.urlFilter.push(value['key']+'='+value['value'])
     })
     let tempurl = this.urlFilter.join('&')
+    console.log(`${this.url}${startOfsString+tempurl}`)
     try{
       const params = {
         method: "GET",
