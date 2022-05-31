@@ -19,7 +19,9 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    console.log(error)
+    if (error.response.status === 404) {
+      throw new Error(`${err.config.url} not found`);
+    }
     return Promise.reject(error);
 });
 
@@ -235,7 +237,8 @@ export class BaseService{
       let response = await authFetch(this.url, params, logout)   
       return response.data;
     }catch (error){
-      return null;
+      print(error)
+      return error;
     }
   }
 
