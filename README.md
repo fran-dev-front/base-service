@@ -45,6 +45,7 @@ Create (service).js file
   // irequestFilter.push({'key':'X', 'value': '1'})
   // irequestFilter.push({'key':'y', 'value': '2'})
   // irequestFilter.push({'key':'z', 'value': '3'})
+  async uploadDoc(formData, logout)
 
 /////////////////////////////////
 
