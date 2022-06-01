@@ -20,8 +20,9 @@ axios.interceptors.response.use(function (response) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     if (error.response.status === 404) {
-      throw new Error(`${err.config.url} not found`);
+      console.log('Not Found & Unauthorized')
     }
+    //console.log(error)
     return Promise.reject(error);
 });
 
@@ -237,9 +238,28 @@ export class BaseService{
       let response = await authFetch(this.url, params, logout)   
       return response.data;
     }catch (error){
-      print(error)
-      return error;
+      console.log(error)
+      return null;
     }
+  }
+  async uploadDoc(formData, logout){
+    let urlParams = this.url
+    try{
+      const params = {
+        method: "GET",
+        url: urlParams,
+        data: formData,
+        headers: {
+          "Content-Type":"multipart/form-data",
+          "type": "formData"
+        },
+      }
+      let response = await authFetch(urlParams, params, logout)   
+      return response.data;
+    }catch (error){
+      return null;
+    }
+
   }
 
 }

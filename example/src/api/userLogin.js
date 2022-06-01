@@ -17,6 +17,15 @@ export class UserManages extends base.BaseService{
   }
 }
 
+export class Suppliers extends base.BaseService{
+  constructor(){
+    const baseUrl = BASE_URL;
+    const endPoint = 'inventory/suppliers';
+    super(baseUrl, endPoint)
+  }
+}
+
+
 // export async function loginApi(formData){
 
 //   const BASE_PATH = "https://ecommerce-game-woz.herokuapp.com";

@@ -40,8 +40,8 @@ async function authFetch(url, params, logout){
       try {
         const response = await axios(paramsTemp)
         return response;
-        
       } catch (error) {
+        console.log(error)
         return error;
       }
    // }
