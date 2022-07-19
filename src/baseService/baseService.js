@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import axios from 'axios'
 import authFetch from './fetch'
 
@@ -19,10 +20,7 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    if (error.response.status === 404) {
-      console.log('Not Found & Unauthorized')
-    }
-    //console.log(error)
+    console.log('!!error', error)
     return Promise.reject(error);
 });
 
@@ -46,9 +44,10 @@ export class BaseService{
         },
       }
       let response = await axios(params)  
-      return response.data;
+      return response;
     }catch (error){
-      return null;
+      console.log('baseservice',error.message)
+      return error.message;
     }
   }
   async postDataAuth(formData, logout){
@@ -78,7 +77,7 @@ export class BaseService{
         },
       }
       let response = await axios(params)  
-      return response.data;
+      return response;
     }catch (error){
       return null;
     }
@@ -116,7 +115,7 @@ export class BaseService{
         },
       }
       let response = await axios(params)  
-      return response.data;
+      return response;
     }catch (error){
       return null;
     }
@@ -138,7 +137,7 @@ export class BaseService{
         },
       }
       let response = await authFetch(urlParams, params, logout)   
-      return response.data;
+      return response;
     }catch (error){
       return null;
     }
@@ -153,7 +152,7 @@ export class BaseService{
         },
       }
       let response = await axios(params)   
-      return response.data;
+      return response;
     }catch (error){
       return null;
     }
@@ -168,7 +167,7 @@ export class BaseService{
         },
       }
       let response = await authFetch(this.url, params, logout)   
-      return response.data;
+      return response;
     }catch (error){
       return null;
     }
@@ -236,7 +235,7 @@ export class BaseService{
         },
       }
       let response = await authFetch(this.url, params, logout)   
-      return response.data;
+      return response;
     }catch (error){
       console.log(error)
       return null;
@@ -255,7 +254,7 @@ export class BaseService{
         },
       }
       let response = await authFetch(urlParams, params, logout)   
-      return response.data;
+      return response;
     }catch (error){
       return null;
     }

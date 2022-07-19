@@ -25,11 +25,9 @@ async function authFetch(url, params, logout){
   if(!token){
     logout();
   } else {
-    console.log('entro a si hay token')
     //if(hasExpiredToken(token)){
       //logout();
     //} else {
-      console.log('entro a axios')
       const paramsTemp = {
         ...params,
         headers: {
