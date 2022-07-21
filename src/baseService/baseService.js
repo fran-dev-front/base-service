@@ -63,7 +63,7 @@ export class BaseService{
       let result = await authFetch(this.url, params, logout) 
       return result ? result : null
     }catch (error){
-      return null;
+      return error;
     }
   }
   async editData(id, formData){
@@ -79,7 +79,7 @@ export class BaseService{
       let response = await axios(params)  
       return response;
     }catch (error){
-      return null;
+      return error;
     }
   }
   async editDataAuth(id, formData, logout){
@@ -95,7 +95,7 @@ export class BaseService{
       let result = await authFetch(this.url, params, logout) 
       return result ? result : null
     }catch (error){
-      return null;
+      return error;
     }
   }
   async getAll(page="", numberOfItems=""){
@@ -117,7 +117,7 @@ export class BaseService{
       let response = await axios(params)  
       return response;
     }catch (error){
-      return null;
+      return error;
     }
   }
   async getAllAuth(logout, page="", numberOfItems=""){
@@ -139,7 +139,7 @@ export class BaseService{
       let response = await authFetch(urlParams, params, logout)   
       return response;
     }catch (error){
-      return null;
+      return error;
     }
   }
   async getAllById(id){
@@ -154,7 +154,7 @@ export class BaseService{
       let response = await axios(params)   
       return response;
     }catch (error){
-      return null;
+      return error;
     }
   }
   async getAllByIdAuth(id, logout){
@@ -169,7 +169,7 @@ export class BaseService{
       let response = await authFetch(this.url, params, logout)   
       return response;
     }catch (error){
-      return null;
+      return error;
     }
   }
   async getById(id){
@@ -185,7 +185,7 @@ export class BaseService{
       let response = await axios(params)  
       return response;
     }catch (error){
-      return null;
+      return error;
     }
   }
   async deleteAuth(id, logout){
@@ -200,7 +200,7 @@ export class BaseService{
       let response = await authFetch(this.url, params, logout)  
       return response;
     }catch (error){
-      return null;
+      return error;
     }
   }
   async delete(id){
@@ -215,7 +215,7 @@ export class BaseService{
       let response = await axios(params)  
       return response;
     }catch (error){
-      return null;
+      return error;
     }
   }
   // baseurl/bussines?id=1&username=memo&page=0
@@ -238,7 +238,7 @@ export class BaseService{
       return response;
     }catch (error){
       console.log(error)
-      return null;
+      return error;
     }
   }
   async uploadDoc(formData, logout){
@@ -256,7 +256,7 @@ export class BaseService{
       let response = await authFetch(urlParams, params, logout)   
       return response;
     }catch (error){
-      return null;
+      return error;
     }
 
   }

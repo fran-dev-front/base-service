@@ -5,7 +5,7 @@ import { BASE_URL } from '../constants/constants'
 export class LoginApiService extends base.BaseService {
   constructor(){
     const baseUrl = BASE_URL;
-    const endpoint = "auth/login"
+    const endpoint = "auth/login/"
     super(baseUrl, endpoint);
   }
 }
