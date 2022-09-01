@@ -25,9 +25,9 @@ async function authFetch(url, params, logout){
   if(!token){
     logout();
   } else {
-    //if(hasExpiredToken(token)){
-      //logout();
-    //} else {
+    if(hasExpiredToken(token)){
+      logout();
+    } else {
       const paramsTemp = {
         ...params,
         headers: {
