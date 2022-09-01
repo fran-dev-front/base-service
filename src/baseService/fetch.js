@@ -42,7 +42,7 @@ async function authFetch(url, params, logout){
         console.log(error)
         return error;
       }
-   // }
+   }
     
   }
 }
