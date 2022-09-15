@@ -245,7 +245,7 @@ export class BaseService{
     let urlParams = this.url
     try{
       const params = {
-        method: "GET",
+        method: "PUT",
         url: urlParams,
         data: formData,
         headers: {
