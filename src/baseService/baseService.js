@@ -241,12 +241,12 @@ export class BaseService{
       return error;
     }
   }
-  async uploadDoc(formData, logout){
+  async uploadDoc(id, formData, logout){
     let urlParams = this.url
     try{
       const params = {
         method: "PUT",
-        url: urlParams,
+        url: `${this.url}/${id}`,
         data: formData,
         headers: {
           "Content-Type":"multipart/form-data",
