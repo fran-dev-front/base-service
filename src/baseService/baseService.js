@@ -250,7 +250,6 @@ export class BaseService{
         data: formData,
         headers: {
           "Content-Type":"multipart/form-data",
-          "type": "formData"
         },
       }
       let response = await authFetch(urlParams, params, logout)   
