@@ -93,7 +93,7 @@ export class BaseService{
         },
       }
       let result = await authFetch(this.url, params, logout) 
-      return result ? result : null
+      return result
     }catch (error){
       return error;
     }
