@@ -189,8 +189,9 @@ export class BaseService{
     }
   }
   async deleteAuth(id, formData,logout){
+    const params = ''
     if(id){
-      const params = {
+        params = {
         method: "DELETE",
         url: `${this.url}/${id}`,
         data: formData,
@@ -199,7 +200,7 @@ export class BaseService{
         },
       }
     }else{
-      const params = {
+        params = {
         method: "DELETE",
         url: `${this.url}`,
         data: formData,
