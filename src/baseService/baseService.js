@@ -188,15 +188,27 @@ export class BaseService{
       return error;
     }
   }
-  async deleteAuth(id, logout){
-    try{
+  async deleteAuth(id, formData,logout){
+    if(id){
       const params = {
         method: "DELETE",
         url: `${this.url}/${id}`,
+        data: formData,
         headers: {
           "Content-Type":"application/json"
         },
       }
+    }else{
+      const params = {
+        method: "DELETE",
+        url: `${this.url}`,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      } 
+    }
+    try{
       let response = await authFetch(this.url, params, logout)  
       return response;
     }catch (error){
