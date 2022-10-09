@@ -188,7 +188,24 @@ export class BaseService{
       return error;
     }
   }
-  async deleteAuth(id, formData,logout){
+
+  async deleteAuth(id, logout){
+    const params = {
+        method: "DELETE",
+        url: `${this.url}/${id}`,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+    try{
+      let response = await authFetch(this.url, params, logout)  
+      return response;
+    }catch (error){
+      return error;
+    }
+  }
+
+  async deleteAuthForm(id, formData,logout){
     const params = ''
     if(id){
         params = {
@@ -216,6 +233,7 @@ export class BaseService{
       return error;
     }
   }
+
   async delete(id){
     try{
       const params = {
