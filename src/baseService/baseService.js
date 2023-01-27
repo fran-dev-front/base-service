@@ -291,5 +291,24 @@ export class BaseService{
 
   }
 
+  async uploadImg(id, formData, logout){
+    let urlParams = this.url
+    try{
+      const params = {
+        method: "POST",
+        url: `${this.url}/${id}`,
+        data: formData,
+        headers: {
+          "Content-Type":"multipart/form-data",
+        },
+      }
+      let response = await authFetch(urlParams, params, logout)   
+      return response;
+    }catch (error){
+      return error;
+    }
+
+  }
+
 }
 export default BaseService;
