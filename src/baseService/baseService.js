@@ -98,6 +98,25 @@ export class BaseService{
       return error;
     }
   }
+
+  async edit(formData, logout){
+    try{
+      const params = {
+        method: "PUT",
+        url: `${this.url}`,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let result = await authFetch(this.url, params, logout) 
+      return result
+    }catch (error){
+      return error;
+    }
+  }
+
+
   async getAll(page="", numberOfItems=""){
     let urlParams = this.url
     if(page!=""){
