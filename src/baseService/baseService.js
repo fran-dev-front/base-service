@@ -310,12 +310,12 @@ export class BaseService{
 
   }
 
-  async uploadImg(id, formData, logout){
+  async uploadImg(formData, logout){
     let urlParams = this.url
     try{
       const params = {
         method: "POST",
-        url: `${this.url}/${id}`,
+        url: `${this.url}`,
         data: formData,
         headers: {
           "Content-Type":"multipart/form-data",
