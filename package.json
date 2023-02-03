@@ -9,7 +9,7 @@
   "module": "dist/index.modern.js",
   "source": "src/index.js",
   "engines": {
-    "node": ">=10"
+    "node": "*"
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
@@ -24,7 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^17.0.0"
+    "react": "*"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
