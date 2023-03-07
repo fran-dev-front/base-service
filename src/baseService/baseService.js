@@ -32,7 +32,8 @@ export class BaseService{
     this.urlFilter = [];
     this.url = this.baseUrl+'/'+this.endPoint
   }
-  
+
+/////////////////////postData////////////////////////
   async postData(formData){
     try{
       const params = {
@@ -50,6 +51,8 @@ export class BaseService{
       return error.message;
     }
   }
+
+/////////////////////postData with auth////////////////////////
   async postDataAuth(formData, logout){
     try{
       const params = {
@@ -66,6 +69,8 @@ export class BaseService{
       return error;
     }
   }
+
+/////////////////////edit data////////////////////////
   async editData(id, formData){
     try{
       const params = {
@@ -82,6 +87,8 @@ export class BaseService{
       return error;
     }
   }
+
+/////////////////////postData Auth////////////////////////
   async editDataAuth(id, formData, logout){
     try{
       const params = {
@@ -98,6 +105,8 @@ export class BaseService{
       return error;
     }
   }
+
+/////////////////////Get all ////////////////////////
   async getAll(page="", numberOfItems=""){
     let urlParams = this.url
     if(page!=""){
@@ -120,6 +129,8 @@ export class BaseService{
       return error;
     }
   }
+
+/////////////////////Get all auth////////////////////////
   async getAllAuth(logout, page="", numberOfItems=""){
     let urlParams = this.url
     if(page!=""){
@@ -142,6 +153,8 @@ export class BaseService{
       return error;
     }
   }
+
+/////////////////////Get by id////////////////////////
   async getAllById(id){
     try{
       const params = {
@@ -157,6 +170,8 @@ export class BaseService{
       return error;
     }
   }
+
+/////////////////////Get by id auth////////////////////////
   async getAllByIdAuth(id, logout){
     try{
       const params = {
@@ -172,6 +187,8 @@ export class BaseService{
       return error;
     }
   }
+
+/////////////////////Get by id////////////////////////
   async getById(id){
     try{
       const params = {
@@ -189,6 +206,7 @@ export class BaseService{
     }
   }
 
+/////////////////////delete auth////////////////////////
   async deleteAuth(id, logout){
     const params = {
         method: "DELETE",
@@ -205,6 +223,7 @@ export class BaseService{
     }
   }
 
+/////////////////////delete auth////////////////////////
   async deleteAuthForm(id, formData,logout){
     const params = ''
     if(id){
@@ -234,6 +253,7 @@ export class BaseService{
     }
   }
 
+/////////////////////delete////////////////////////
   async delete(id){
     try{
       const params = {
@@ -250,7 +270,10 @@ export class BaseService{
     }
   }
   // baseurl/bussines?id=1&username=memo&page=0
-  async filter(filters, logout){
+
+/////////////////////Get by id auth////////////////////////
+  async filter(filters, logout=''){
+    let response = ''
     let startOfsString = '?'
     filters.map((value) => {
       this.urlFilter.push(value['key']+'='+value['value'])
@@ -265,7 +288,11 @@ export class BaseService{
           "Content-Type":"application/json"
         },
       }
-      let response = await authFetch(this.url, params, logout)   
+      if(logout != ''){
+        response = await authFetch(this.url, params, logout)
+      }else{
+        response = await axios(params)
+      }  
       return response;
     }catch (error){
       console.log(error)
