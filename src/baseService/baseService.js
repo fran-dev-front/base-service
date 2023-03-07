@@ -106,7 +106,28 @@ export class BaseService{
     }
   }
 
+<<<<<<< HEAD
 /////////////////////Get all ////////////////////////
+=======
+  async edit(formData, logout){
+    try{
+      const params = {
+        method: "PUT",
+        url: `${this.url}`,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+      let result = await authFetch(this.url, params, logout) 
+      return result
+    }catch (error){
+      return error;
+    }
+  }
+
+
+>>>>>>> 0b81cb8662f7b8e333dfd9e5c08e70d3ccdad665
   async getAll(page="", numberOfItems=""){
     let urlParams = this.url
     if(page!=""){
@@ -305,6 +326,25 @@ export class BaseService{
       const params = {
         method: "PUT",
         url: `${this.url}/${id}`,
+        data: formData,
+        headers: {
+          "Content-Type":"multipart/form-data",
+        },
+      }
+      let response = await authFetch(urlParams, params, logout)   
+      return response;
+    }catch (error){
+      return error;
+    }
+
+  }
+
+  async uploadImg(formData, logout){
+    let urlParams = this.url
+    try{
+      const params = {
+        method: "POST",
+        url: `${this.url}`,
         data: formData,
         headers: {
           "Content-Type":"multipart/form-data",
