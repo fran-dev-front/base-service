@@ -71,8 +71,8 @@ export class BaseService{
   }
 
 /////////////////////edit data////////////////////////
-  async editData(id, formData){
-    try{
+  async editData(id=null, formData){
+    if(id){
       const params = {
         method: "PUT",
         url: `${this.url}/${id}`,
@@ -81,6 +81,18 @@ export class BaseService{
           "Content-Type":"application/json"
         },
       }
+    }else{
+      const params = {
+        method: "PUT",
+        url: `${this.url}`,
+        data: formData,
+        headers: {
+          "Content-Type":"application/json"
+        },
+      }
+    }
+    try{
+     
       let response = await axios(params)  
       return response;
     }catch (error){
@@ -107,6 +119,7 @@ export class BaseService{
   }
 
 /////////////////////Get all ////////////////////////
+
   async getAll(page="", numberOfItems=""){
     let urlParams = this.url
     if(page!=""){
