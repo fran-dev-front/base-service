@@ -72,7 +72,7 @@ export class BaseService{
 
 /////////////////////edit data////////////////////////
   async editData(id=null, formData){
-    if(id){
+    try{
       const params = {
         method: "PUT",
         url: `${this.url}/${id}`,
@@ -81,24 +81,36 @@ export class BaseService{
           "Content-Type":"application/json"
         },
       }
-    }else{
-      const params = {
-        method: "PUT",
-        url: `${this.url}`,
-        data: formData,
-        headers: {
-          "Content-Type":"application/json"
-        },
-      }
-    }
-    try{
-     
       let response = await axios(params)  
       return response;
     }catch (error){
       return error;
     }
   }
+/////////////////////postData Auth no id////////////////////////
+async editDataAuthNid(id=null, formData, logout){
+  let urlT = ''
+
+  if(id != null){
+    urlT = `${this.url}/${id}`
+  }else{
+    urlT = `${this.url}`
+  }
+  try{
+    const params = {
+      method: "PUT",
+      url: urlT,
+      data: formData,
+      headers: {
+        "Content-Type":"application/json"
+      },
+    }
+    let result = await authFetch(this.url, params, logout) 
+    return result
+  }catch (error){
+    return error;
+  }
+}
 
 /////////////////////postData Auth////////////////////////
   async editDataAuth(id, formData, logout){
