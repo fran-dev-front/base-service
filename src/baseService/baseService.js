@@ -47,8 +47,8 @@ export class BaseService{
       let response = await axios(params)  
       return response;
     }catch (error){
-      console.log('baseservice',error.message)
-      return error.message;
+      console.log('baseservice',error)
+      return error;
     }
   }
 
