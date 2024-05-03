@@ -170,6 +170,26 @@ async editDataAuthNid(id=null, formData, logout){
     }
   }
 
+/////////////////////Get all ////////////////////////
+
+async getAll(formData){
+  let urlParams = this.url
+  try{
+    const params = {
+      method: "GET",
+      url: urlParams,
+      data: formData,
+      headers: {
+        "Content-Type":"application/json"
+      },
+    }
+    let response = await axios(params)  
+    return response;
+  }catch (error){
+    return error;
+  }
+}
+
 /////////////////////Get all auth////////////////////////
   async getAllAuth(logout, page="", numberOfItems=""){
     let urlParams = this.url
