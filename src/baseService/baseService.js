@@ -172,7 +172,7 @@ async editDataAuthNid(id=null, formData, logout){
 
 /////////////////////Get all ////////////////////////
 
-async getAll(formData){
+async get(formData){
   let urlParams = this.url
   try{
     const params = {
